@@ -8,9 +8,13 @@ import {
   Twitter,
   Mail,
   Menu,
-  X
+  X,
+  Instagram,
+  Rocket,
+  UserSearch,
+  Telescope,
+  Mailbox
 } from '@lucide/astro';
-import { Instagram } from 'simple-icons-astro';
 import '../styles/global.css';
 ---
 
@@ -91,15 +95,15 @@ import '../styles/global.css';
         <div class="flex-1 bg-gray-900 md:ml-0">
             <!-- file tabs -->
             <div class="bg-gray-800 border-b border-gray-700 flex overflow-x-auto">
-                <div class="tab-active px-3 md:px-4 py-2 text-xs md:text-sm border-r border-gray-700 flex items-center whitespace-nowrap">
+                <div class="tab-active px-3 md:px-4 py-2 text-xs md:text-sm border-r border-gray-700 flex items-center text-gray-400 hover:text-white cursor-pointer whitespace-nowrap" data-tab="about">
                     <FileCode class="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
                     about.ts
                 </div>
-                <div class="px-3 md:px-4 py-2 text-xs md:text-sm border-r border-gray-700 flex items-center text-gray-400 hover:text-white cursor-pointer whitespace-nowrap">
+                <div class="px-3 md:px-4 py-2 text-xs md:text-sm border-r border-gray-700 flex items-center text-gray-400 hover:text-white cursor-pointer whitespace-nowrap" data-tab="projects">
                     <Folder class="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
                     projects.md
                 </div>
-                <div class="px-3 md:px-4 py-2 text-xs md:text-sm border-r border-gray-700 flex items-center text-gray-400 hover:text-white cursor-pointer whitespace-nowrap">
+                <div class="px-3 md:px-4 py-2 text-xs md:text-sm border-r border-gray-700 flex items-center text-gray-400 hover:text-white cursor-pointer whitespace-nowrap" data-tab="readme">
                     <BookOpen class="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
                     README.md
                 </div>
@@ -107,7 +111,8 @@ import '../styles/global.css';
             
             <!-- content of the ce -->
             <div class="p-3 md:p-6 overflow-auto h-screen md:h-full">
-                <div class="font-mono text-xs md:text-sm">
+                <!-- About.ts Content -->
+                <div id="about-content" class="font-mono text-xs md:text-sm">
                     <div class="flex">
                         <span class="line-number">1</span>
                         <span><span class="syntax-keyword">interface</span> <span class="syntax-type">Developer</span> <span class="syntax-bracket">&#123;</span></span>
@@ -238,7 +243,7 @@ import '../styles/global.css';
                     </div>
                     <div class="flex">
                         <span class="line-number">33</span>
-                        <span class="ml-2 md:ml-4"><span class="syntax-property">name</span>: <span class="syntax-string">'Ricky Dev.'</span>,</span>
+                        <span class="ml-2 md:ml-4"><span class="syntax-property">name</span>: <span class="syntax-string">'Ricky Ricardo'</span>,</span>
                     </div>
                     <div class="flex">
                         <span class="line-number">34</span>
@@ -345,11 +350,70 @@ import '../styles/global.css';
                         <span><span class="syntax-bracket">&#125;</span>;</span>
                     </div>
                     
-                    
                     <!-- footer -->
                     <div class="mt-6 md:mt-8 pt-4 border-t border-gray-700">
                         <div class="text-center text-xs md:text-sm text-gray-400">
                             Built with <span class="text-orange-500 font-semibold">Astro</span> by <span class="text-blue-400">rickyy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- projects.md content -->
+                <div id="projects-content" class="hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                        <!-- Papersend.io -->
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 md:p-6">
+                            <h3 class="text-lg md:text-xl font-semibold mb-3 text-white">Papersend.io</h3>
+                            <p class="text-sm md:text-base text-gray-300 mb-4 leading-relaxed">
+                                Papersend is the free alternative to DocSend for secure document sharing, tracking, and Data Rooms. Customize branding, control access, and protect your documents.
+                            </p>
+                            <button class="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded border border-gray-600 transition-colors">
+                                Open Project Website
+                            </button>
+                        </div>
+
+                        <!-- Qivi.io -->
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 md:p-6">
+                            <h3 class="text-lg md:text-xl font-semibold mb-3 text-white">Qivi.io</h3>
+                            <p class="text-sm md:text-base text-gray-300 mb-4 leading-relaxed">
+                                Qivi is an all-in-one application designed to streamline business operations, enhance productivity, and maximize success. Data security is a priority.
+                            </p>
+                            <button class="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded border border-gray-600 transition-colors">
+                                Open Project Website
+                            </button>
+                        </div>
+
+                        <!-- TECHPOINT.de -->
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 md:p-6">
+                            <h3 class="text-lg md:text-xl font-semibold mb-3 text-white">TECHPOINT.de</h3>
+                            <p class="text-sm md:text-base text-gray-300 mb-4 leading-relaxed">
+                                TECHPOINT is a local IT service provider based in the Starnberg district and the Fünfseenland region, specializing in delivering reliable and modern IT solutions.
+                            </p>
+                            <button class="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded border border-gray-600 transition-colors">
+                                Open Project Website
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- readme.md content -->
+                <div id="readme-content" class="hidden">
+                    <div class="prose prose-invert max-w-none">
+                        <h1 class="text-2xl md:text-3xl font-bold mb-4 text-white">README.md</h1>
+                        <div class="text-gray-300 space-y-4">
+                            <p>Welcome to my portfolio! This site showcases my skills and ability as a web developer. Built with modern technologies and designed to reflect my style and capabilities.</p>
+                            
+                            <h2 class="text-xl font-semibold text-white mt-6 mb-3 flex items-center"><UserSearch class="w-5 h-5 mr-2" /> About Me</h2>
+                            <p>Hi! I'm Ricky, a web developer who enjoys building modern responsive websites. I specialize in front-end development with tools like Astro, React and JavaScript.</p>
+                            
+                            <h2 class="text-xl font-semibold text-white mt-6 mb-3 flex items-center"><Rocket class="w-5 h-5 mr-2" /> Tech Stack</h2>
+                            <p>Specifically for this site, I use the Astro framework and TailwindCSS for styling. Mainly because Astro is perfect for these types of site (it's a static web generator) and Tailwind is just <b><em>good.</em></b></p>
+                            
+                            <h2 class="text-xl font-semibold text-white mt-6 mb-3 flex items-center"><Telescope class="w-5 h-5 mr-2" /> Current Focus</h2>
+                            <p>Currently focused on my vocational school, although on the side I still continue in learning Front-End Design and further enhancing my coding skill.</p>
+                            
+                            <h2 class="text-xl font-semibold text-white mt-6 mb-3 flex items-center"><Mailbox class="w-5 h-5 mr-2" /> Get In Touch</h2>
+                            <p>Feel free to reach out through any of the social links in the sidebar. I'm 24/7 available if you want to discuss something.</p>
                         </div>
                     </div>
                 </div>
@@ -359,20 +423,37 @@ import '../styles/global.css';
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('[class*="px-"]');
+            // Tab switching functionality
+            const tabs = document.querySelectorAll('[data-tab]');
+            const contents = {
+                'about': document.getElementById('about-content'),
+                'projects': document.getElementById('projects-content'),
+                'readme': document.getElementById('readme-content')
+            };
+
             tabs.forEach(tab => {
-                if (tab.classList.contains('py-2')) {
-                    tab.addEventListener('click', function() {
-                        tabs.forEach(t => {
-                            if (t.classList.contains('py-2')) {
-                                t.classList.remove('tab-active');
-                            }
-                        });
-                        this.classList.add('tab-active');
+                tab.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('tab-active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('tab-active');
+                    
+                    // Hide all content
+                    Object.values(contents).forEach(content => {
+                        if (content) content.classList.add('hidden');
                     });
-                }
+                    
+                    // Show target content
+                    if (contents[targetTab]) {
+                        contents[targetTab].classList.remove('hidden');
+                    }
+                });
             });
 
+            // Mobile menu functionality
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileMenu = document.getElementById('mobileMenu');
             const mobileOverlay = document.getElementById('mobileOverlay');

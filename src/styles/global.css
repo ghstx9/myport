@@ -64,6 +64,7 @@ body {
 .tab-active {
     background: #1e293b;
     border-bottom: 2px solid #0ea5e9;
+    color: white !important
 }
 
 .social-icon {
