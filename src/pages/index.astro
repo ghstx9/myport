@@ -26,17 +26,17 @@ import '../styles/global.css';
 </head>
 
 <body class="bg-gray-900 text-gray-100 min-h-screen overflow-x-hidden">
-    <!-- Mobile Menu Button -->
+    <!-- mobile menu btn -->
     <button id="mobileMenuBtn" class="fixed top-4 left-4 z-50 p-2 bg-gray-800 rounded-lg border border-gray-700 md:hidden">
         <Menu id="menuIcon" class="w-5 h-5" />
         <X id="closeIcon" class="w-5 h-5 hidden" />
     </button>
     
-    <!-- Mobile Overlay -->
+
     <div id="mobileOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
     
     <div class="flex flex-col md:flex-row min-h-screen">
-        <!-- Left Panel - Profile (Mobile: Sidebar, Desktop: Fixed) -->
+        <!-- leftpnl - profile (mobile is sidebar, desktop shows fixed) -->
         <div id="mobileMenu" class="mobile-menu fixed md:relative inset-y-0 left-0 z-40 w-80 max-w-sm bg-gray-800 border-r border-gray-700 p-4 md:p-6 overflow-y-auto md:block">
             <div class="mb-4 md:mb-6">
                 <div class="w-16 h-16 md:w-24 md:h-24 rounded-full border-2 border-red-500 mb-3 md:mb-4 overflow-hidden mx-auto md:mx-0 bg-gray-700">
@@ -58,7 +58,7 @@ import '../styles/global.css';
                 </p>
             </div>
             
-            <!-- Terminal -->
+            <!-- terminal -->
             <div class="bg-gray-900 rounded-lg border border-gray-600 mb-4 md:mb-6">
                 <div class="bg-gray-700 px-3 py-2 rounded-t-lg flex items-center">
                     <div class="flex space-x-1">
@@ -112,7 +112,7 @@ import '../styles/global.css';
             
             <!-- content of the ce -->
             <div class="p-3 md:p-6 overflow-auto h-screen md:h-full">
-                <!-- About.ts Content -->
+                <!-- about.ts lines and content -->
                 <div id="about-content" class="font-mono text-xs md:text-sm">
                     <div class="flex">
                         <span class="line-number">1</span>
@@ -432,7 +432,7 @@ import '../styles/global.css';
                         </div>
                     </div>
 
-                    <!-- footer for projects -->
+                    <!-- footer for readme -->
                     <div class="mt-6 md:mt-8 pt-4 border-t border-gray-700">
                         <div class="text-center text-xs md:text-sm text-gray-400">
                             Built with <span class="text-orange-500 font-semibold">Astro</span> by <span class="text-blue-400">rickyy</span>
@@ -445,59 +445,63 @@ import '../styles/global.css';
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Tab switching functionality
-            const tabs = document.querySelectorAll('[data-tab]');
-            const contents = {
-                'about': document.getElementById('about-content'),
-                'projects': document.getElementById('projects-content'),
-                'readme': document.getElementById('readme-content')
-            };
 
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const targetTab = this.getAttribute('data-tab');
-                    
-                    // Remove active class from all tabs
-                    tabs.forEach(t => t.classList.remove('tab-active'));
-                    
-                    // Add active class to clicked tab
-                    this.classList.add('tab-active');
-                    
-                    // Hide all content
-                    Object.values(contents).forEach(content => {
-                        if (content) content.classList.add('hidden');
-                    });
-                    
-                    // Show target content
-                    if (contents[targetTab]) {
-                        contents[targetTab].classList.remove('hidden');
-                    }
-                });
+    const tabs = document.querySelectorAll('[data-tab]') as NodeListOf<HTMLElement>;
+    const contents = {
+        'about': document.getElementById('about-content') as HTMLElement | null,
+        'projects': document.getElementById('projects-content') as HTMLElement | null,
+        'readme': document.getElementById('readme-content') as HTMLElement | null
+    };
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', (event) => {
+            const clickedTab = event.currentTarget as HTMLElement;
+            const targetTab = clickedTab.getAttribute('data-tab');
+
+            tabs.forEach(t => t.classList.remove('tab-active'));
+            
+
+            clickedTab.classList.add('tab-active');
+            
+            Object.values(contents).forEach(content => {
+                if (content) content.classList.add('hidden');
             });
-
-            // Mobile menu functionality
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const mobileOverlay = document.getElementById('mobileOverlay');
-            const menuIcon = document.getElementById('menuIcon');
-            const closeIcon = document.getElementById('closeIcon');
-
-            function toggleMobileMenu() {
-                mobileMenu.classList.toggle('open');
-                mobileOverlay.classList.toggle('hidden');
-                menuIcon.classList.toggle('hidden');
-                closeIcon.classList.toggle('hidden');
+            
+            if (targetTab && contents[targetTab as keyof typeof contents]) {
+                contents[targetTab as keyof typeof contents]?.classList.remove('hidden');
             }
-
-            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-            mobileOverlay.addEventListener('click', toggleMobileMenu);
-
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-                    toggleMobileMenu();
-                }
-            });
         });
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn') as HTMLElement | null;
+    const mobileMenu = document.getElementById('mobileMenu') as HTMLElement | null;
+    const mobileOverlay = document.getElementById('mobileOverlay') as HTMLElement | null;
+    const menuIcon = document.getElementById('menuIcon') as HTMLElement | null;
+    const closeIcon = document.getElementById('closeIcon') as HTMLElement | null;
+
+    function toggleMobileMenu() {
+        if (mobileMenu && mobileOverlay && menuIcon && closeIcon) {
+            mobileMenu.classList.toggle('open');
+            mobileOverlay.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+    }
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
+    
+    if (mobileOverlay) {
+        mobileOverlay.addEventListener('click', toggleMobileMenu);
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) {
+            toggleMobileMenu();
+        }
+    });
+});
     </script>
 </body>
 </html>
