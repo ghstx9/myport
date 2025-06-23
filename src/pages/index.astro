@@ -39,9 +39,10 @@ import '../styles/global.css';
         <!-- Left Panel - Profile (Mobile: Sidebar, Desktop: Fixed) -->
         <div id="mobileMenu" class="mobile-menu fixed md:relative inset-y-0 left-0 z-40 w-80 max-w-sm bg-gray-800 border-r border-gray-700 p-4 md:p-6 overflow-y-auto md:block">
             <div class="mb-4 md:mb-6">
-                <div class="w-16 h-16 md:w-24 md:h-24 rounded-full border-2 border-red-500 mb-3 md:mb-4 overflow-hidden mx-auto md:mx-0">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23374151'/%3E%3Ccircle cx='50' cy='35' r='12' fill='%23F3F4F6'/%3E%3Cpath d='M50 50c-8 0-15 5-18 12h36c-3-7-10-12-18-12z' fill='%23F3F4F6'/%3E%3Crect x='30' y='45' width='40' height='8' fill='%236B7280'/%3E%3C/svg%3E" 
-                         alt="Profile" class="w-full h-full object-cover">
+                <div class="w-16 h-16 md:w-24 md:h-24 rounded-full border-2 border-red-500 mb-3 md:mb-4 overflow-hidden mx-auto md:mx-0 bg-gray-700">
+                    <img src="/images/prfl.png" 
+                         alt="Ricky Aldiansyah" 
+                         class="w-full h-full object-cover object-center scale-110 hover:scale-125 transition-transform duration-300 select-none" draggable="false">
                 </div>
                 <h1 class="text-lg md:text-xl font-semibold mb-1 text-center md:text-left">Ricky Aldiansyah</h1>
                 <p class="text-sm text-blue-400 mb-2 text-center md:text-left">Software Engineer</p>
@@ -243,7 +244,7 @@ import '../styles/global.css';
                     </div>
                     <div class="flex">
                         <span class="line-number">33</span>
-                        <span class="ml-2 md:ml-4"><span class="syntax-property">name</span>: <span class="syntax-string">'Ricky Ricardo'</span>,</span>
+                        <span class="ml-2 md:ml-4"><span class="syntax-property">name</span>: <span class="syntax-string">'Richard Aldiansyah'</span>,</span>
                     </div>
                     <div class="flex">
                         <span class="line-number">34</span>
@@ -361,37 +362,51 @@ import '../styles/global.css';
                 <!-- projects.md content -->
                 <div id="projects-content" class="hidden">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                        <!-- Papersend.io -->
                         <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 md:p-6">
-                            <h3 class="text-lg md:text-xl font-semibold mb-3 text-white">Papersend.io</h3>
+                            <h3 class="text-lg md:text-xl font-semibold mb-3 text-white">React Weather App</h3>
                             <p class="text-sm md:text-base text-gray-300 mb-4 leading-relaxed">
-                                Papersend is the free alternative to DocSend for secure document sharing, tracking, and Data Rooms. Customize branding, control access, and protect your documents.
+                                A simple weather app built with React.js and TailwindCSS, and it's powered by the free API from OpenWeather! o.o
                             </p>
-                            <button class="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded border border-gray-600 transition-colors">
+                            <a href="https://rickysweather.pages.dev/" target="_blank" rel="noopener noreferrer" class="block w-full bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded border border-gray-600 transition-colors text-center">
                                 Open Project Website
-                            </button>
+                            </a>
                         </div>
 
-                        <!-- Qivi.io -->
                         <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 md:p-6">
-                            <h3 class="text-lg md:text-xl font-semibold mb-3 text-white">Qivi.io</h3>
+                            <h3 class="text-lg md:text-xl font-semibold mb-3 text-white">Astro98 (WIP)</h3>
                             <p class="text-sm md:text-base text-gray-300 mb-4 leading-relaxed">
-                                Qivi is an all-in-one application designed to streamline business operations, enhance productivity, and maximize success. Data security is a priority.
+                                This is my attempt in cloning Windows 98 desktop environment by using React and custom made UI using TailwindCSS.
                             </p>
-                            <button class="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded border border-gray-600 transition-colors">
+                            <a href="https://astro98.pages.dev/" target="_blank" rel="noopener noreferrer" class="block w-full bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded border border-gray-600 transition-colors text-center">
                                 Open Project Website
-                            </button>
+                            </a>
                         </div>
 
-                        <!-- TECHPOINT.de -->
                         <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 md:p-6">
-                            <h3 class="text-lg md:text-xl font-semibold mb-3 text-white">TECHPOINT.de</h3>
+                            <h3 class="text-lg md:text-xl font-semibold mb-3 text-white">Previous Personal Site</h3>
                             <p class="text-sm md:text-base text-gray-300 mb-4 leading-relaxed">
-                                TECHPOINT is a local IT service provider based in the Starnberg district and the Fünfseenland region, specializing in delivering reliable and modern IT solutions.
+                                My previous portfolio site built with Astro and TypeScript, note: this website isn't mobile friendly, so be cautious.
                             </p>
-                            <button class="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded border border-gray-600 transition-colors">
+                            <a href="https://rickys-space.pages.dev/" target="_blank" rel="noopener noreferrer" class="block w-full bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded border border-gray-600 transition-colors text-center">
                                 Open Project Website
-                            </button>
+                            </a>
+                        </div>
+
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 md:p-6">
+                            <h3 class="text-lg md:text-xl font-semibold mb-3 text-white">Current Portfolio Site</h3>
+                            <p class="text-sm md:text-base text-gray-300 mb-4 leading-relaxed">
+                                Yes, the current site you're looking at. It features a VS Code-inspired interface with interactive tabs and responsive design.
+                            </p>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="block w-full bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded border border-gray-600 transition-colors text-center">
+                                Open Project Website
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- footer for projects -->
+                    <div class="mt-6 md:mt-8 pt-4 border-t border-gray-700">
+                        <div class="text-center text-xs md:text-sm text-gray-400">
+                            Built with <span class="text-orange-500 font-semibold">Astro</span> by <span class="text-blue-400">rickyy</span>
                         </div>
                     </div>
                 </div>
@@ -404,7 +419,7 @@ import '../styles/global.css';
                             <p>Welcome to my portfolio! This site showcases my skills and ability as a web developer. Built with modern technologies and designed to reflect my style and capabilities.</p>
                             
                             <h2 class="text-xl font-semibold text-white mt-6 mb-3 flex items-center"><UserSearch class="w-5 h-5 mr-2" /> About Me</h2>
-                            <p>Hi! I'm Ricky, a web developer who enjoys building modern responsive websites. I specialize in front-end development with tools like Astro, React and JavaScript.</p>
+                            <p>Hello there, my name is Ricky. I'm a vocational student from Indonesia that has a passion for web development. Stay tuned for my future projects!</p>
                             
                             <h2 class="text-xl font-semibold text-white mt-6 mb-3 flex items-center"><Rocket class="w-5 h-5 mr-2" /> Tech Stack</h2>
                             <p>Specifically for this site, I use the Astro framework and TailwindCSS for styling. Mainly because Astro is perfect for these types of site (it's a static web generator) and Tailwind is just <b><em>good.</em></b></p>
@@ -414,6 +429,13 @@ import '../styles/global.css';
                             
                             <h2 class="text-xl font-semibold text-white mt-6 mb-3 flex items-center"><Mailbox class="w-5 h-5 mr-2" /> Get In Touch</h2>
                             <p>Feel free to reach out through any of the social links in the sidebar. I'm 24/7 available if you want to discuss something.</p>
+                        </div>
+                    </div>
+
+                    <!-- footer for projects -->
+                    <div class="mt-6 md:mt-8 pt-4 border-t border-gray-700">
+                        <div class="text-center text-xs md:text-sm text-gray-400">
+                            Built with <span class="text-orange-500 font-semibold">Astro</span> by <span class="text-blue-400">rickyy</span>
                         </div>
                     </div>
                 </div>
